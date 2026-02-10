@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Post;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -93,5 +94,32 @@ class RegisterController extends Controller
         }
 
         return User::create($userData);
+    }
+
+    public function showRegistrationForm()
+    {
+        $allowedIds = [8, 9, 10, 11, 12, 13, 14, 15, 16, 17];
+
+        $randomPosts = Post::with('user')
+            ->whereIn('id', $allowedIds)
+            ->where('type', 'image')
+            ->whereNotNull('media_assets')
+            ->inRandomOrder()
+            ->limit(10)
+            ->get();
+
+        $backgroundImages = [];
+        
+        foreach ($randomPosts as $post) {
+            if (!empty($post->media_urls) && is_array($post->media_urls)) {
+                $randomImage = $post->media_urls[array_rand($post->media_urls)];
+                $backgroundImages[] = [
+                    'url' => asset($randomImage),
+                    'post' => $post
+                ];
+            }
+        }
+
+        return view('auth.register', compact('backgroundImages'));
     }
 }

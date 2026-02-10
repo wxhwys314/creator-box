@@ -56,7 +56,15 @@ CreatorBox is a full-stack web application built to connect creative creators wi
    ```bash
    cp .env.example .env
    ```
-   Update `.env` with your database credentials and other environment settings.
+   Replace `<DBNAME>`, `<USERNAME>` and `<PASSWORD>` in `.env` with your database credentials and other environment settings.
+   ```
+   DB_CONNECTION=mysql
+   DB_HOST=127.0.0.1
+   DB_PORT=3306
+   DB_DATABASE=<DBNAME>
+   DB_USERNAME=<USERNAME>
+   DB_PASSWORD=<PASSWORD>
+   ```
 
 5. **Run database migrations:**
    ```bash

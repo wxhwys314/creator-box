@@ -1,5 +1,5 @@
 <div class="viewer-content">
-    <div class="banner" style="background: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3)), url('{{ asset('images/background.jpg') }}') center/cover no-repeat;">
+    <div class="banner" style="background: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3)), url('{{ asset('images/background.png') }}') center/cover no-repeat;">
         <div class="switch-button-wrapper">
             <div class="gradient-shadow">
                 <div class="switch-button-button active"><b>About CreatorBox</b></div>
